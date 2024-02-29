@@ -48,5 +48,37 @@ def product_details(product_id):
         return "Product not found."
     return render_template('product_details.html', product=product)
 
+@app.route('/add_to_cart/<int:product_id>')
+def add_to_cart(product_id):
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    cart = session.get('cart', {})
+    
+    product_id_str = str(product_id)  # Ensure the product ID is a string.
+    if product_id_str in cart:
+        cart[product_id_str] += 1
+    else:
+        cart[product_id_str] = 1
+    
+    session['cart'] = cart  # Update the session with the modified cart.
+    session.modified = True  # Ensure the modification is marked.
+    
+    return redirect(url_for('product_listing'))
+
+
+@app.route('/view_cart')
+def view_cart():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    cart_products = []
+    cart = session.get('cart', {})
+    for product_id_str, quantity in cart.items():
+        product = next((product for product in PRODUCTS if str(product["id"]) == product_id_str), None)
+        if product:
+            product['quantity'] = quantity  # Add quantity to the product dict
+            cart_products.append(product)
+    return render_template('view_cart.html', cart_products=cart_products)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,9 +1,9 @@
 # Store
 
-Ensure you have Flask installed in your Python environment. If not, install it using pip:
+Ensure you have Flask installed in your Python environment. If not, install it using pipenv:
 
 ```
-pip install flask
+pipenv install
 python app.py
 ```
 
