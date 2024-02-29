@@ -9,7 +9,7 @@ Take-home project for the TableCheck QA Automation role.
 
 ## Task 1: Write Automated Tests for a Web Application
 
-Application Overview: The application provided in this repository includes several key business features: a login page, a product listing page, and a product details page.
+Application Overview: The application provided in this repository includes several key business features: a login page, a product listing page, a cart, and a product details page.
 
 ### Requirements:
 Implement automated tests for the following scenarios using Playwright and Python:
