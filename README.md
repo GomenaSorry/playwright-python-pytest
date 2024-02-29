@@ -33,7 +33,7 @@ Implement automated tests for the following scenarios using Playwright and Pytho
 
 
 ## Submission Guidelines:
-Push your code to a public Git repository (e.g., GitHub, GitLab).
+Push your code to a public Git repository. GitHub is preferred.
 
 Make sure to include a README file with:
 * Instructions on how to set up and run your tests.
