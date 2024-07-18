@@ -1,7 +1,5 @@
 name: Playwright Tests
 on:
-  push:
-    branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
 jobs:
@@ -20,7 +18,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Prepare Allure history # Step to prepare Allure history directory
+      - name: Prepare Allure history # step to prepare Allure history directory
         run: |
           cd ..
           mkdir -p ${{ vars.ALLURE_RESULTS_PATH }}
@@ -34,22 +32,21 @@ jobs:
         if: always() 
         continue-on-error: true
         with:
-          ref: gh-pages # Specify the branch to retrieve Allure history from
-          path: gh-pages # Set the destination path for Allure history
+          ref: gh-pages # specify the branch to retrieve Allure history from
+          path: gh-pages # set the destination path for Allure history
 
-      - name: Allure report action # Step to generate Allure report
+      - name: Allure report action # step to generate Allure report
         uses: simple-elf/allure-report-action@master
-        if: always() # Execute even if previous steps fail
+        if: always() # execute even if previous steps fail
         with:
-          allure_results: ${{ vars.ALLURE_RESULTS_PATH }} # Specify the directory containing Allure results
-          allure_history: allure-history # Specify the directory to store Allure history
-          keep_reports: 5 # Specify the number of previous reports to keep
+          allure_results: ${{ vars.ALLURE_RESULTS_PATH }} # specify the directory containing Allure results
+          allure_history: allure-history # specify the directory to store Allure history
+          keep_reports: 5 # specify the number of previous reports to keep
 
-      - name: Deploy Allure report to GitHub Pages # Step to deploy Allure report to GitHub Pages
-        if: always() # Execute even if previous steps fail
+      - name: Deploy Allure report to GitHub Pages # step to deploy Allure report to GitHub Pages
+        if: always() # execute even if previous steps fail
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # Provide the GitHub token for authentication
-          publish_branch: gh-pages # Specify the branch to publish the report to
-          publish_dir: allure-history # Specify the directory containing the report
-
+          github_token: ${{ secrets.GITHUB_TOKEN }} # provide the GitHub token for authentication
+          publish_branch: gh-pages # specify the branch to publish the report to
+          publish_dir: allure-history # specify the directory containing the report
