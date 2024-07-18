@@ -12,9 +12,8 @@ def test_add_product_from_product_listing_page(
         page: Page, 
         login_page: LoginPage, 
         product_listing_page: ProductListingPage) -> None:
-    page.goto("http://127.0.0.1:5000/")
+    login_page.navigate_to_login_page()
     login_page.login("testuser", "password123")
-    page.wait_for_url("**/product_listing")
     expect(product_listing_page.product_list).to_be_visible()
     product_listing_page.click_product_1_item_add_to_cart_link()
     product_listing_page.click_view_cart_button()
@@ -29,7 +28,7 @@ def test_add_product_from_product_listing_page_multiple_times(
         login_page: LoginPage, 
         product_listing_page: ProductListingPage,
         product_cart_page: ProductCartPage) -> None:
-    page.goto("http://127.0.0.1:5000/")
+    login_page.navigate_to_login_page()
     login_page.login("testuser", "password123")
     page.wait_for_url("**/product_listing")
     expect(product_listing_page.product_list).to_be_visible()
@@ -44,12 +43,12 @@ def test_add_product_from_product_listing_page_multiple_times(
 @allure.epic("Product Demo")
 @allure.feature("Product Cart")
 @allure.story("Product Cart Customer Experience")
-def test_add_different_products_from_product_listing_page(
+def test_add_product_from_product_listing_page_to_a_non_empty_cart(
         page: Page, 
         login_page: LoginPage, 
         product_listing_page: ProductListingPage,
         product_cart_page: ProductCartPage) -> None:
-    page.goto("http://127.0.0.1:5000/")
+    login_page.navigate_to_login_page()
     login_page.login("testuser", "password123")
     page.wait_for_url("**/product_listing")
     expect(product_listing_page.product_list).to_be_visible()
@@ -68,12 +67,12 @@ def test_add_different_products_from_product_listing_page(
 @allure.epic("Product Demo")
 @allure.feature("Product Cart")
 @allure.story("Product Cart Customer Experience")
-def test_add_different_product_from_product_listing_page_multiple_times_from_a_non_empty_cart(
+def test_add_product_from_product_listing_page_multiple_times_to_a_non_empty_cart(
         page: Page, 
         login_page: LoginPage, 
         product_listing_page: ProductListingPage,
         product_cart_page: ProductCartPage) -> None:
-    page.goto("http://127.0.0.1:5000/")
+    login_page.navigate_to_login_page()
     login_page.login("testuser", "password123")
     page.wait_for_url("**/product_listing")
     expect(product_listing_page.product_list).to_be_visible()
@@ -101,7 +100,7 @@ def test_add_product_from_product_page(
         product_listing_page: ProductListingPage,
         product_page: ProductPage,
         product_cart_page: ProductCartPage) -> None:
-    page.goto("http://127.0.0.1:5000/")
+    login_page.navigate_to_login_page()
     login_page.login("testuser", "password123")
     page.wait_for_url("**/product_listing")
     product_listing_page.click_product_1_item_link()
@@ -116,13 +115,13 @@ def test_add_product_from_product_page(
 @allure.epic("Product Demo")
 @allure.feature("Product Cart")
 @allure.story("Product Cart Customer Experience")
-def test_add_product_from_product_page(
+def test_add_product_from_product_page_multiple_times(
         page: Page, 
         login_page: LoginPage, 
         product_listing_page: ProductListingPage,
         product_page: ProductPage,
         product_cart_page: ProductCartPage) -> None:
-    page.goto("http://127.0.0.1:5000/")
+    login_page.navigate_to_login_page()
     login_page.login("testuser", "password123")
     page.wait_for_url("**/product_listing")
     for i in range(6):
@@ -138,13 +137,13 @@ def test_add_product_from_product_page(
 @allure.epic("Product Demo")
 @allure.feature("Product Cart")
 @allure.story("Product Cart Customer Experience")
-def test_add_product_from_product_page_with_a_non_empty_cart(
+def test_add_product_from_product_page_to_a_non_empty_cart(
         page: Page, 
         login_page: LoginPage, 
         product_listing_page: ProductListingPage,
         product_page: ProductPage,
         product_cart_page: ProductCartPage) -> None:
-    page.goto("http://127.0.0.1:5000/")
+    login_page.navigate_to_login_page()
     login_page.login("testuser", "password123")
     page.wait_for_url("**/product_listing")
     product_listing_page.click_product_1_item_link()
@@ -167,13 +166,13 @@ def test_add_product_from_product_page_with_a_non_empty_cart(
 @allure.epic("Product Demo")
 @allure.feature("Product Cart")
 @allure.story("Product Cart Customer Experience")
-def test_add_product_from_product_page_with_a_non_empty_cart(
+def test_add_product_from_product_page_to_a_non_empty_cart_multiple_times(
         page: Page, 
         login_page: LoginPage, 
         product_listing_page: ProductListingPage,
         product_page: ProductPage,
         product_cart_page: ProductCartPage) -> None:
-    page.goto("http://127.0.0.1:5000/")
+    login_page.navigate_to_login_page()
     login_page.login("testuser", "password123")
     page.wait_for_url("**/product_listing")
     product_listing_page.click_product_1_item_link()

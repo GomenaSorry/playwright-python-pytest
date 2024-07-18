@@ -8,7 +8,7 @@ class LoginPage:
         self.login_button = page.get_by_role("button", name="Login")
         self.error_message = page.get_by_text("Invalid credentials. Please try again.")
     def navigate_to_login_page(self):
-        self.page.goto("")
+        self.page.goto("http://127.0.0.1:5000/")
 
     def enter_username(self, username: str):
         self.username_input.fill(username)

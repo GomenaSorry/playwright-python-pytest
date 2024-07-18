@@ -19,7 +19,7 @@ def test_product_url_is_correct(
         page: Page, 
         login_page: LoginPage, 
         product_listing_page: ProductListingPage) -> None:
-    page.goto("http://127.0.0.1:5000/")
+    login_page.navigate_to_login_page()
     login_page.login("testuser", "password123")
     page.wait_for_url("**/product_listing")
     product_listing_page.page.get_by_role("link", name=f"Product {phrase}").click()
@@ -36,7 +36,7 @@ def test_product_name_header_is_correct(
         login_page: LoginPage, 
         product_listing_page: ProductListingPage,
         product_page: ProductPage) -> None:
-    page.goto("http://127.0.0.1:5000/")
+    login_page.navigate_to_login_page()
     login_page.login("testuser", "password123")
     page.wait_for_url("**/product_listing")
     product_listing_page.page.get_by_role("link", name=f"Product {phrase}").click()
@@ -52,7 +52,7 @@ def test_product_name_description_is_correct(
         login_page: LoginPage, 
         product_listing_page: ProductListingPage,
         product_page: ProductPage) -> None:
-    page.goto("http://127.0.0.1:5000/")
+    login_page.navigate_to_login_page()
     login_page.login("testuser", "password123")
     page.wait_for_url("**/product_listing")
     product_listing_page.page.get_by_role("link", name=f"Product {phrase}").click()
