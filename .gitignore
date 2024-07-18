@@ -3,3 +3,4 @@ Pipfile.lock
 test_results
 pages/__pycache__
 tests/__pycache__
+*.png
