@@ -9,50 +9,63 @@ Test reporting is handled by the Allure Reporter plugin, with annotations on eac
 
 ### Installation:
 1. Create a virtual environment to manage packages locally:
-    python3 -m venv .venv
+    
+    > python3 -m venv .venv
 
-2. Activate virtual environment
-    .venv/Scripts/activate
+2. Activate virtual environment:
+    
+    > .venv/Scripts/activate
 
-3. Install dependencies using requirements.txt
-    install -r requirements.txt
+3. Install dependencies using requirements.txt:
+   
+   > pip3install -r requirements.txt
 
     --or--
 
     Install individually:
 
     Playwright
-    pip3 install playwright
+
+    > pip3 install playwright
 
     pytest
-    pip3 install pytest
+
+   > pip3 install pytest
 
     pytest-playwright
-    pip3 install pytest-playwright
+
+   > pip3 install pytest-playwright
 
     allure-pytest
-    pip3 install pytest-playwright
+
+   > pip3 install pytest-playwright
 
     pytest-xdist
-    pip3 install pytest-xdist
+
+   > pip3 install pytest-xdist
 
     flask
-    pip3 install flask
+    
+   > pip3 install flask
 
 ### Running tests (using VSCode)
 1. Ensure that the app is running by opening a separate terminal:
-    cd store
-    python app.py
+   > cd store
+   > python app.py
 
-2. Run tests 
-    a. using pytest and Allure Reporter
-        pytest --alluredir='test-results'
+2. Run tests
 
-    b. using pytest, Allure Reporter and parallel execution
-        pytest --alluredir='test-results' -n [number of workers]
+    a. using pytest and Allure Reporter:
 
-3. Generate Allure HTML Report
-    allure serve 'test-results'
+    > pytest --alluredir='test-results'
+
+    b. using pytest, Allure Reporter and parallel execution:
+
+    > pytest --alluredir='test-results' -n [number of workers]
+
+3. Generate Allure HTML Report:
+
+   > allure serve 'test-results'
 
 
 
