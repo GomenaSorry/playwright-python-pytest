@@ -25,17 +25,15 @@ def product_cart_page(page: Page) -> ProductCartPage:
     return ProductCartPage(page)
 
 @pytest.hookimpl(hookwrapper=True)
-def pytest_runtest_makereport(item, call):
+def pytest_runtest_makereport(item):
     outcome = yield
     screen_file = ''
     report = outcome.get_result()
-    extra = getattr(report, "extra", [])
     if report.when == "call" and report.failed:
         try:
             xfail = hasattr(report, "wasxfail")
             if report.failed or xfail and "page" in item.funcargs:
                 page = item.funcargs["page"]
-
                 
                 def generate_random_screenshot_name(name):
                     random_string = ''.join(random.choices(string.ascii_lowercase + string.digits, k=8))
